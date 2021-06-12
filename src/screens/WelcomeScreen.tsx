@@ -2,16 +2,17 @@ import MaskedView from '@react-native-community/masked-view';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, Easing, StyleSheet } from 'react-native';
 import { IS_TESTING } from 'react-native-dotenv';
+
 import Reanimated, {
   Clock,
   Easing as REasing,
   Value as RValue,
-  interpolate,
   timing,
   and,
   block,
   clockRunning,
   color,
+  interpolate,
   not,
   set,
   cond,
@@ -107,7 +108,7 @@ const RainbowButton = ({
   textColor,
   text,
   ...props
-}: any) => {
+}) => {
   return (
     <ButtonPressAnimation
       onPress={onPress}

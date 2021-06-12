@@ -9,6 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import styled from 'styled-components';
 import { position } from '@rainbow-me/styles';
+import { useTheme } from '@rainbow-me/context';
 
 const timingConfig = {
   duration: 2500,
