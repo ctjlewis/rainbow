@@ -6,7 +6,17 @@ import Reanimated, {
   Clock,
   Easing as REasing,
   Value as RValue,
+  interpolate,
   timing,
+  and,
+  block,
+  clockRunning,
+  color,
+  not,
+  set,
+  cond,
+  round,
+  startClock
 } from 'react-native-reanimated';
 import { useValue } from 'react-native-redash';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
@@ -34,19 +44,7 @@ import { useNavigation } from '@rainbow-me/navigation';
 import Routes from '@rainbow-me/routes';
 import { shadow } from '@rainbow-me/styles';
 import logger from 'logger';
-
-const {
-  and,
-  block,
-  clockRunning,
-  color,
-  not,
-  set,
-  cond,
-  interpolate,
-  round,
-  startClock,
-} = Reanimated;
+import { useTheme } from '@rainbow-me/context';
 
 const ButtonContainer = styled(Reanimated.View)`
   border-radius: ${({ height }) => height / 2};
@@ -109,7 +107,7 @@ const RainbowButton = ({
   textColor,
   text,
   ...props
-}) => {
+}: any) => {
   return (
     <ButtonPressAnimation
       onPress={onPress}

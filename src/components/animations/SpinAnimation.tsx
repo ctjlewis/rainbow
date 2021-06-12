@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { Animated, Easing } from 'react-native';
+
 import stylePropType from 'react-style-proptype';
 
-export default class SpinAnimation extends PureComponent {
+export default class SpinAnimation extends PureComponent<{
+  duration: number,
+  style: any
+}> {
   static propTypes = {
     children: PropTypes.node,
     duration: PropTypes.number,

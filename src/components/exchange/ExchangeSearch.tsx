@@ -2,8 +2,7 @@ import { isEmpty } from 'lodash';
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import RadialGradient from 'react-native-radial-gradient';
 import Animated, {
-  NewEasing,
-  repeat,
+  Easing,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -103,7 +102,7 @@ const SearchSpinnerWrapper = styled(Animated.View)`
 
 const rotationConfig = {
   duration: 500,
-  easing: NewEasing.linear,
+  easing: Easing.linear,
 };
 
 const timingConfig = {

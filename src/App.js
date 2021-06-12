@@ -255,27 +255,25 @@ class App extends Component {
     Navigation.setTopLevelNavigator(navigatorRef);
 
   render = () => (
-    <GestureHandlerRootView>
-      <MainThemeProvider>
-        <RainbowContextWrapper>
-          <Portal>
-            <SafeAreaProvider>
-              <Provider store={store}>
-                <FlexItem>
-                  {this.state.initialRoute && (
-                    <InitialRouteContext.Provider value={this.state.initialRoute}>
-                      <RoutesComponent ref={this.handleNavigatorRef} />
-                      <PortalConsumer />
-                    </InitialRouteContext.Provider>
-                  )}
-                  <OfflineToast />
-                </FlexItem>
-              </Provider>
-            </SafeAreaProvider>
-          </Portal>
-        </RainbowContextWrapper>
-      </MainThemeProvider>
-    </GestureHandlerRootView>
+    <MainThemeProvider>
+      <RainbowContextWrapper>
+        <Portal>
+          <SafeAreaProvider>
+            <Provider store={store}>
+              <FlexItem>
+                {this.state.initialRoute && (
+                  <InitialRouteContext.Provider value={this.state.initialRoute}>
+                    <RoutesComponent ref={this.handleNavigatorRef} />
+                    <PortalConsumer />
+                  </InitialRouteContext.Provider>
+                )}
+                <OfflineToast />
+              </FlexItem>
+            </Provider>
+          </SafeAreaProvider>
+        </Portal>
+      </RainbowContextWrapper>
+    </MainThemeProvider>
   );
 }
 
