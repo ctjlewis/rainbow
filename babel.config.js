@@ -36,7 +36,6 @@ module.exports = function (api) {
     'date-fns',
     'graphql-tag',
     ['lodash', { id: ['lodash', 'recompact'] }],
-    'react-native-reanimated/plugin',
     [
       'module:react-native-dotenv',
       {
@@ -66,6 +65,11 @@ module.exports = function (api) {
           '@babel/plugin-transform-runtime',
           '@babel/plugin-transform-react-inline-elements',
           ['transform-remove-console', { exclude: ['error'] }],
+          /**
+           * react-native-animated must be last!
+           * @see https://docs.swmansion.com/react-native-reanimated/docs/installation/
+           */
+          'react-native-reanimated/plugin',
         ],
         presets: presets,
       },

@@ -29,6 +29,10 @@ if (process.env.CI) {
 module.exports = {
   resolver: {
     blacklistRE,
+    extraNodeModules: {
+      stream: require.resolve('readable-stream'),
+      crypto: require.resolve('react-native-crypto-js'),
+    },
   },
   transformer,
 };

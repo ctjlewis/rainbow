@@ -56,6 +56,7 @@ import { walletConnectLoadState } from './redux/walletconnect';
 import Routes from '@rainbow-me/routes';
 import logger from 'logger';
 import { Portal } from 'react-native-cool-modals/Portal';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const WALLETCONNECT_SYNC_DELAY = 500;
 
@@ -254,25 +255,27 @@ class App extends Component {
     Navigation.setTopLevelNavigator(navigatorRef);
 
   render = () => (
-    <MainThemeProvider>
-      <RainbowContextWrapper>
-        <Portal>
-          <SafeAreaProvider>
-            <Provider store={store}>
-              <FlexItem>
-                {this.state.initialRoute && (
-                  <InitialRouteContext.Provider value={this.state.initialRoute}>
-                    <RoutesComponent ref={this.handleNavigatorRef} />
-                    <PortalConsumer />
-                  </InitialRouteContext.Provider>
-                )}
-                <OfflineToast />
-              </FlexItem>
-            </Provider>
-          </SafeAreaProvider>
-        </Portal>
-      </RainbowContextWrapper>
-    </MainThemeProvider>
+    <GestureHandlerRootView>
+      <MainThemeProvider>
+        <RainbowContextWrapper>
+          <Portal>
+            <SafeAreaProvider>
+              <Provider store={store}>
+                <FlexItem>
+                  {this.state.initialRoute && (
+                    <InitialRouteContext.Provider value={this.state.initialRoute}>
+                      <RoutesComponent ref={this.handleNavigatorRef} />
+                      <PortalConsumer />
+                    </InitialRouteContext.Provider>
+                  )}
+                  <OfflineToast />
+                </FlexItem>
+              </Provider>
+            </SafeAreaProvider>
+          </Portal>
+        </RainbowContextWrapper>
+      </MainThemeProvider>
+    </GestureHandlerRootView>
   );
 }
 
