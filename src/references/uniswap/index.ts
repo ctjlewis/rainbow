@@ -1,67 +1,32 @@
 import { Interface } from '@ethersproject/abi';
 import { ChainId, Token, WETH } from '@uniswap/sdk';
 import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json';
-import { filter, flatMap, keyBy, map, toLower } from 'lodash';
 import { DAI_ADDRESS, USDC_ADDRESS } from '../';
-import RAINBOW_TOKEN_LIST_OFFLINE_DATA from './rainbow-token-list.json';
+import OFFLINE_TOKEN_METADATA from './rainbow-token-list.json';
 import MULTICALL_ABI from './uniswap-multicall-abi.json';
-
 import { default as UNISWAP_TESTNET_TOKEN_LIST } from './uniswap-pairs-testnet.json';
 import { abi as UNISWAP_V2_ROUTER_ABI } from './uniswap-v2-router.json';
+import { getByAddress, getCurated, getSafe, tokenListFromData } from './utils';
 import UNISWAP_V1_EXCHANGE_ABI from './v1-exchange-abi';
-import { RainbowToken } from '@rainbow-me/entities';
 
-const tokenList: RainbowToken[] = map(
-  RAINBOW_TOKEN_LIST_OFFLINE_DATA.tokens,
-  token => {
-    const { address: rawAddress, decimals, name, symbol, extensions } = token;
-    const address = toLower(rawAddress);
-    return {
-      address,
-      decimals,
-      name,
-      symbol,
-      uniqueId: address,
-      ...extensions,
-    };
-  }
-);
-
-const ethWithAddress: RainbowToken = {
-  address: 'eth',
-  decimals: 18,
-  isRainbowCurated: true,
-  isVerified: true,
-  name: 'Ethereum',
-  symbol: 'ETH',
-  uniqueId: 'eth',
+//
+// RE-EXPORTS
+//
+export * from './utils';
+export {
+  MULTICALL_ABI,
+  UNISWAP_TESTNET_TOKEN_LIST,
+  UNISWAP_V1_EXCHANGE_ABI,
+  UNISWAP_V2_ROUTER_ABI,
 };
 
-const tokenListWithEth: RainbowToken[] = [ethWithAddress, ...tokenList];
+//
+// STATIC DATA
+//
+export const UNISWAP_V2_ROUTER_ADDRESS =
+  '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
 
-const RAINBOW_TOKEN_LIST_OFFLINE: Record<string, RainbowToken> = keyBy(
-  tokenListWithEth,
-  'address'
-);
-
-const curatedRainbowTokenList: RainbowToken[] = filter(
-  tokenListWithEth,
-  'isRainbowCurated'
-);
-
-const TOKEN_SAFE_LIST: Record<string, string> = keyBy(
-  flatMap(curatedRainbowTokenList, ({ name, symbol }) => [name, symbol]),
-  id => toLower(id)
-);
-
-const CURATED_UNISWAP_TOKENS: Record<string, RainbowToken> = keyBy(
-  curatedRainbowTokenList,
-  'address'
-);
-
-const UNISWAP_V2_ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
-
-const UNISWAP_V2_BASES = {
+export const UNISWAP_V2_BASES = {
   [ChainId.MAINNET]: [
     WETH[ChainId.MAINNET],
     new Token(ChainId.MAINNET, DAI_ADDRESS, 18, 'DAI', 'Dai Stablecoin'),
@@ -73,13 +38,15 @@ const UNISWAP_V2_BASES = {
   [ChainId.KOVAN]: [WETH[ChainId.KOVAN]],
 };
 
-const PAIR_INTERFACE = new Interface(IUniswapV2PairABI);
-const PAIR_GET_RESERVES_FRAGMENT = PAIR_INTERFACE.getFunction('getReserves');
-const PAIR_GET_RESERVES_CALL_DATA: string = PAIR_INTERFACE.encodeFunctionData(
-  PAIR_GET_RESERVES_FRAGMENT
-);
+export const PAIR_INTERFACE = new Interface(IUniswapV2PairABI);
 
-const MULTICALL_NETWORKS: { [chainId in ChainId]: string } = {
+export const PAIR_GET_RESERVES_FRAGMENT =
+  PAIR_INTERFACE.getFunction('getReserves');
+
+export const PAIR_GET_RESERVES_CALL_DATA: string =
+  PAIR_INTERFACE.encodeFunctionData(PAIR_GET_RESERVES_FRAGMENT);
+
+export const MULTICALL_NETWORKS: { [chainId in ChainId]: string } = {
   [ChainId.MAINNET]: '0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441',
   [ChainId.ROPSTEN]: '0x53C43764255c17BD724F74c4eF150724AC50a3ed',
   [ChainId.KOVAN]: '0x2cc8688C5f75E365aaEEb4ea8D6a480405A48D2A',
@@ -87,18 +54,16 @@ const MULTICALL_NETWORKS: { [chainId in ChainId]: string } = {
   [ChainId.GÖRLI]: '0x77dCa2C955b15e9dE4dbBCf1246B4B85b651e50e',
 };
 
-export {
-  CURATED_UNISWAP_TOKENS,
-  MULTICALL_ABI,
-  MULTICALL_NETWORKS,
-  PAIR_GET_RESERVES_CALL_DATA,
-  PAIR_GET_RESERVES_FRAGMENT,
-  PAIR_INTERFACE,
-  RAINBOW_TOKEN_LIST_OFFLINE,
-  TOKEN_SAFE_LIST,
-  UNISWAP_TESTNET_TOKEN_LIST,
-  UNISWAP_V1_EXCHANGE_ABI,
-  UNISWAP_V2_BASES,
-  UNISWAP_V2_ROUTER_ABI,
-  UNISWAP_V2_ROUTER_ADDRESS,
-};
+export const REMOTE_TOKEN_LIST_ENDPOINT =
+  'https://raw.githubusercontent.com/ctjlewis/rainbow-token-list/service-compatibility/output/rainbow-token-list.json';
+
+//
+// OFFLINE TOKEN EXPORTS
+//
+export const OFFLINE_TOKEN_LIST = tokenListFromData(OFFLINE_TOKEN_METADATA);
+
+export const CURATED_OFFLINE_TOKEN_LIST = getCurated(OFFLINE_TOKEN_LIST);
+export const CURATED_UNISWAP_TOKENS = getByAddress(CURATED_OFFLINE_TOKEN_LIST);
+
+export const RAINBOW_TOKEN_LIST_OFFLINE = getByAddress(OFFLINE_TOKEN_LIST);
+export const TOKEN_SAFE_LIST = getSafe(OFFLINE_TOKEN_LIST);
