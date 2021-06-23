@@ -21,12 +21,12 @@ export { default as shitcoins } from './shitcoins.json';
 export { default as smartContractMethods } from './smartcontract-methods.json';
 export { default as testnetAssets } from './testnet-assets.json';
 export {
-  CURATED_UNISWAP_TOKENS,
+  OFFLINE_CURATED_TOKENS,
   PAIR_GET_RESERVES_CALL_DATA,
   PAIR_GET_RESERVES_FRAGMENT,
   PAIR_INTERFACE,
-  RAINBOW_TOKEN_LIST_OFFLINE,
-  TOKEN_SAFE_LIST,
+  OFFLINE_TOKENS,
+  OFFLINE_TOKEN_LIST_SAFE,
   UNISWAP_TESTNET_TOKEN_LIST,
   UNISWAP_V1_EXCHANGE_ABI,
   UNISWAP_V2_BASES,

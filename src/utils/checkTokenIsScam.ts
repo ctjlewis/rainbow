@@ -1,11 +1,11 @@
 import { toLower } from 'lodash';
-import { TOKEN_SAFE_LIST } from '@rainbow-me/references';
+import { OFFLINE_TOKEN_LIST_SAFE } from '@rainbow-me/references';
 
 export default function checkTokenIsScam(
   name: string,
   symbol: string
 ): boolean {
-  const nameFound = TOKEN_SAFE_LIST[toLower(name)];
-  const symbolFound = TOKEN_SAFE_LIST[toLower(symbol)];
+  const nameFound = OFFLINE_TOKEN_LIST_SAFE[toLower(name)];
+  const symbolFound = OFFLINE_TOKEN_LIST_SAFE[toLower(symbol)];
   return !!nameFound || !!symbolFound;
 }

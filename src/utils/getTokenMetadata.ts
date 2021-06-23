@@ -1,9 +1,9 @@
 import { toLower } from 'lodash';
 import { RainbowToken } from '@rainbow-me/entities';
-import { RAINBOW_TOKEN_LIST_OFFLINE } from '@rainbow-me/references';
+import { OFFLINE_TOKENS } from '@rainbow-me/references';
 
 export default function getTokenMetadata(
   tokenAddress: string
 ): RainbowToken | undefined {
-  return RAINBOW_TOKEN_LIST_OFFLINE[toLower(tokenAddress)];
+  return OFFLINE_TOKENS[toLower(tokenAddress)];
 }
