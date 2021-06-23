@@ -12,7 +12,7 @@ import networkTypes from '@rainbow-me/networkTypes';
 import {
   CURATED_UNISWAP_TOKENS,
   DefaultUniswapFavorites,
-  RAINBOW_TOKEN_LIST,
+  RAINBOW_TOKEN_LIST_OFFLINE,
   SOCKS_ADDRESS,
 } from '@rainbow-me/references';
 import { greaterThanOrEqualTo, multiply } from '@rainbow-me/utilities';
@@ -120,28 +120,31 @@ export const uniswapPairsInit = () => (dispatch, getState) => {
 export const uniswapResetState = () => dispatch =>
   dispatch({ type: UNISWAP_CLEAR_STATE });
 
-export const uniswapUpdateFavorites = (assetAddress, add = true) => (
+export const uniswapUpdateFavorites = (
+  assetAddress,
+  add = true
+) => (
   dispatch,
   getState
 ) => {
-  const { favorites } = getState().uniswap;
-  const normalizedFavorites = map(favorites, toLower);
+    const { favorites } = getState().uniswap;
+    const normalizedFavorites = map(favorites, toLower);
 
-  const updatedFavorites = add
-    ? uniq(concat(normalizedFavorites, assetAddress))
-    : isArray(assetAddress)
-    ? without(normalizedFavorites, ...assetAddress)
-    : without(normalizedFavorites, assetAddress);
-  dispatch({
-    payload: updatedFavorites,
-    type: UNISWAP_UPDATE_FAVORITES,
-  });
-  saveUniswapFavorites(updatedFavorites);
-};
+    const updatedFavorites = add
+      ? uniq(concat(normalizedFavorites, assetAddress))
+      : isArray(assetAddress)
+        ? without(normalizedFavorites, ...assetAddress)
+        : without(normalizedFavorites, assetAddress);
+    dispatch({
+      payload: updatedFavorites,
+      type: UNISWAP_UPDATE_FAVORITES,
+    });
+    saveUniswapFavorites(updatedFavorites);
+  };
 
 // -- Reducer --------------------------------------------------------------- //
 export const INITIAL_UNISWAP_STATE = {
-  allTokens: RAINBOW_TOKEN_LIST,
+  allTokens: RAINBOW_TOKEN_LIST_OFFLINE,
   favorites: DefaultUniswapFavorites['mainnet'],
   fetchingUniswap: false,
   loadingAllTokens: true,
