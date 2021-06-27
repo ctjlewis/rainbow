@@ -25,6 +25,7 @@ import {
 } from '@rainbow-me/hooks';
 import { useNavigation } from '@rainbow-me/navigation';
 import Routes from '@rainbow-me/routes';
+import { BACK_UP_MANUALLY, BACK_UP_TO_PLATFORM, BACK_UP_YOUR_WALLET, DONT_LOSE_YOUR_WALLET } from './BackupSheet.locale';
 
 const onError = error => DelayedAlert({ title: error }, 500);
 
@@ -175,12 +176,12 @@ export default function BackupSheet() {
       default:
         return (
           <BackupSheetSection
-            descriptionText={`Don't lose your wallet! Save an encrypted copy to ${cloudPlatform}.`}
+            descriptionText={DONT_LOSE_YOUR_WALLET(cloudPlatform)}
             onPrimaryAction={onIcloudBackup}
             onSecondaryAction={onManualBackup}
-            primaryLabel={`􀙶 Back up to ${cloudPlatform}`}
-            secondaryLabel="🤓 Back up manually"
-            titleText="Back up your wallet"
+            primaryLabel={BACK_UP_TO_PLATFORM(cloudPlatform)}
+            secondaryLabel={BACK_UP_MANUALLY}
+            titleText={BACK_UP_YOUR_WALLET}
             type="Default"
           />
         );

@@ -9,6 +9,7 @@ import { SheetActionButton } from '../../sheet';
 import { Text } from '../../text';
 import BackupIcon from '@rainbow-me/assets/backupIcon.png';
 import BackupIconDark from '@rainbow-me/assets/backupIconDark.png';
+import { useTheme } from '@rainbow-me/context';
 import WalletBackupStepTypes from '@rainbow-me/helpers/walletBackupStepTypes';
 import { useWallets } from '@rainbow-me/hooks';
 import { ImgixImage } from '@rainbow-me/images';
