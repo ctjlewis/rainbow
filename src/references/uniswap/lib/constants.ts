@@ -20,11 +20,13 @@ export const UNISWAP_V2_BASES = {
 
 export const PAIR_INTERFACE = new Interface(IUniswapV2PairABI);
 
-export const PAIR_GET_RESERVES_FRAGMENT =
-  PAIR_INTERFACE.getFunction('getReserves');
+export const PAIR_GET_RESERVES_FRAGMENT = PAIR_INTERFACE.getFunction(
+  'getReserves'
+);
 
-export const PAIR_GET_RESERVES_CALL_DATA: string =
-  PAIR_INTERFACE.encodeFunctionData(PAIR_GET_RESERVES_FRAGMENT);
+export const PAIR_GET_RESERVES_CALL_DATA: string = PAIR_INTERFACE.encodeFunctionData(
+  PAIR_GET_RESERVES_FRAGMENT
+);
 
 export const MULTICALL_NETWORKS: { [chainId in ChainId]: string } = {
   [ChainId.MAINNET]: '0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441',
