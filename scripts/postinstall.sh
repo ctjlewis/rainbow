@@ -113,3 +113,6 @@ else
   sentry-cli --version
   echo "sentry-cli is already installed. Skipping"
 fi
+
+# Link `react-native-localize`
+react-native link react-native-localize

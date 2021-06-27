@@ -3289,6 +3289,11 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
 
+"@types/react-native-extra-dimensions-android@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-extra-dimensions-android/-/react-native-extra-dimensions-android-1.2.0.tgz#50c7e9b252f04ce0c3bc0945ac687a403fe8ec4f"
+  integrity sha512-9lUeO0P/yXBPlR8KjIKttqLXy/zRS0a6tofiCooDRcT2YXWkhVAoXZv7y/5opzUdCORk6eSMkfMRLbRjs8v5Uw==
+
 "@types/react-native@*", "@types/react-native@>=0.62.0":
   version "0.63.49"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.49.tgz#b9a4781a0543763f0079c3ef2ba2148a4509b32e"
@@ -12183,6 +12188,11 @@ react-native-linear-gradient@^2.5.6:
   version "2.5.6"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
   integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
+
+react-native-localize@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-2.1.1.tgz#da8f8776991d2b748708c408db05152602cefb38"
+  integrity sha512-+uyz2/b0vyLq19fcb7r1qU1gqmzbp3aC6EMTvOVXwfBuiN+aJXR/fDdFOJJ8D7+bLccKeuS2zBDrazh+ZayX/g==
 
 react-native-mail@^4.1.0:
   version "4.1.0"
