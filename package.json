@@ -5,7 +5,7 @@
   "scripts": {
     "setup": "yarn install && yarn allow-scripts && yarn postinstall",
     "android": "yarn uninstall:android && react-native run-android",
-    "android:apk": "yarn gradle assembleRelease && yarn uninstall:android && yarn android:load-apk",
+    "android:apk": "yarn update-tokens && yarn gradle assembleRelease && yarn uninstall:android && yarn android:load-apk",
     "android:bundle": "./scripts/check-env.sh && yarn gradle bundleRelease && open app/build/outputs/bundle/release/",
     "android:load-apk": "adb install app/build/outputs/apk/release/app-release.apk",
     "clear-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* $TMPDIR/metro-* $TMPDIR/haste-map-*",
@@ -37,6 +37,7 @@
     "uninstall:ios": "echo 'Script not yet added.'",
     "update-env": "curl -H 'Authorization: token '$GITHUB_TOKEN -H 'Accept: application/vnd.github.v3.raw' -O  -L https://api.github.com/repos/rainbow-me/rainbow-env/contents/dotenv && rm -f .env && mv dotenv .env",
     "android-reverse-ports": "adb reverse tcp:8097 tcp:8097 && adb reverse tcp:8081 tcp:8081",
+    "update-tokens": "yarn update-token-list && yarn update-token-metadata",
     "update-token-list": "./scripts/update-token-list.sh",
     "update-token-metadata": "./scripts/update-token-metadata.sh"
   },
