@@ -21,29 +21,27 @@ export { default as shitcoins } from './shitcoins.json';
 export { default as smartContractMethods } from './smartcontract-methods.json';
 export { default as testnetAssets } from './testnet-assets.json';
 export {
-  CURATED_UNISWAP_TOKENS,
+  OFFLINE_TOKENS,
+  OFFLINE_TOKEN_LIST,
+  OFFLINE_TOKEN_LIST_SAFE,
+  OFFLINE_TOKEN_METADATA,
+  OFFLINE_CURATED_TOKENS,
   PAIR_GET_RESERVES_CALL_DATA,
   PAIR_GET_RESERVES_FRAGMENT,
   PAIR_INTERFACE,
-  RAINBOW_TOKEN_LIST,
-  TOKEN_SAFE_LIST,
+  REMOTE_TOKEN_LIST_ENDPOINT,
   UNISWAP_TESTNET_TOKEN_LIST,
   UNISWAP_V1_EXCHANGE_ABI,
   UNISWAP_V2_BASES,
   UNISWAP_V2_ROUTER_ABI,
   UNISWAP_V2_ROUTER_ADDRESS,
+  getSafe,
 } from './uniswap';
 export {
   getWyreErrorOverride,
   wyreSupportedCountries,
   WYRE_SUPPORTED_COUNTRIES_ISO,
 } from './wyre';
-
-// NFTs Contracts
-export const ENS_NFT_CONTRACT_ADDRESS =
-  '0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85';
-export const UNIV3_NFT_CONTRACT_ADDRESS =
-  '0xc36442b4a4522e871399cd717abdd847ab11fe88';
 
 export const ETH_ICON_URL = 'https://s3.amazonaws.com/token-icons/eth.png';
 export const RAINBOW_PROFILES_BASE_URL = 'https://rainbow.me';

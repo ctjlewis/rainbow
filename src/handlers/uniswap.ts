@@ -425,7 +425,7 @@ export const getAllTokens = async () => {
       const resultTokens = result?.data?.tokens || [];
       const lastItem = resultTokens[resultTokens.length - 1];
       lastId = lastItem?.id ?? '';
-      dispatch(uniswapUpdateTokens(resultTokens));
+      dispatch(await uniswapUpdateTokens(resultTokens));
       if (resultTokens.length < UniswapPageSize) {
         dispatch(uniswapLoadedAllTokens());
         dataEnd = true;

@@ -1,11 +1,30 @@
 import { toLower } from 'lodash';
-import { TOKEN_SAFE_LIST } from '@rainbow-me/references';
+import { OFFLINE_TOKEN_LIST_SAFE } from '@rainbow-me/references';
 
-export default function checkTokenIsScam(
-  name: string,
-  symbol: string
-): boolean {
-  const nameFound = TOKEN_SAFE_LIST[toLower(name)];
-  const symbolFound = TOKEN_SAFE_LIST[toLower(symbol)];
+interface TokenMetadata {
+  name: string;
+  symbol: string;
+}
+
+/**
+ * @todo Make async.
+ */
+export default async function checkTokenIsScam({
+  name,
+  symbol,
+}: TokenMetadata): Promise<boolean> {
+  // logger.log('loadTokenList');
+  // logger.log({ loadTokenList });
+  // const tokenList = await fromDiskCache(
+  //   'tokenList',
+  //   async () => {
+  //     const liveTokenList: RainbowToken[] = await loadTokenList(fetch);
+  //     return getSafe(liveTokenList);
+  //   },
+  //   60 // one minute
+  // );
+  const tokenList: any = OFFLINE_TOKEN_LIST_SAFE;
+  const nameFound = tokenList[toLower(name)];
+  const symbolFound = tokenList[toLower(symbol)];
   return !!nameFound || !!symbolFound;
 }

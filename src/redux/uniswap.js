@@ -10,9 +10,9 @@ import {
 } from '@rainbow-me/handlers/uniswap';
 import networkTypes from '@rainbow-me/networkTypes';
 import {
-  CURATED_UNISWAP_TOKENS,
   DefaultUniswapFavorites,
-  RAINBOW_TOKEN_LIST,
+  OFFLINE_CURATED_TOKENS,
+  OFFLINE_TOKENS,
   SOCKS_ADDRESS,
 } from '@rainbow-me/references';
 import { greaterThanOrEqualTo, multiply } from '@rainbow-me/utilities';
@@ -52,15 +52,17 @@ export const uniswapGetAllExchanges = () => async (dispatch, getState) => {
   }
 };
 
-const parseTokens = tokens => {
+const parseTokens = async tokens => {
   let parsedTokens = {};
-  tokens.forEach(token => {
+
+  for (const token of tokens) {
     const tokenAddress = toLower(token.id);
     const metadata = getTokenMetadata(tokenAddress);
     if (token.totalLiquidity === '0') return;
 
     // if unverified AND name/symbol match a curated token, skip
-    if (!metadata?.isVerified && checkTokenIsScam(token.name, token.symbol)) {
+    const tokenIsScam = await checkTokenIsScam(token);
+    if (!metadata?.isVerified && tokenIsScam) {
       return;
     }
 
@@ -81,23 +83,27 @@ const parseTokens = tokens => {
       uniqueId: tokenAddress,
       ...metadata,
     };
+
     parsedTokens[tokenAddress] = tokenInfo;
-  });
+  }
+
   return parsedTokens;
 };
 
-export const uniswapUpdateTokens = tokens => (dispatch, getState) => {
-  const { allTokens } = getState().uniswap;
-  const parsedTokens = parseTokens(tokens);
+export const uniswapUpdateTokens = async tokens => {
+  const parsedTokens = await parseTokens(tokens);
 
-  const updatedTokens = {
-    ...allTokens,
-    ...parsedTokens,
+  return (dispatch, getState) => {
+    const { allTokens } = getState().uniswap;
+    const updatedTokens = {
+      ...allTokens,
+      ...parsedTokens,
+    };
+    dispatch({
+      payload: updatedTokens,
+      type: UNISWAP_UPDATE_ALL_TOKENS,
+    });
   };
-  dispatch({
-    payload: updatedTokens,
-    type: UNISWAP_UPDATE_ALL_TOKENS,
-  });
 };
 
 export const uniswapLoadedAllTokens = () => dispatch =>
@@ -109,7 +115,7 @@ export const uniswapPairsInit = () => (dispatch, getState) => {
   const { network } = getState().settings;
   const pairs =
     network === networkTypes.mainnet
-      ? CURATED_UNISWAP_TOKENS
+      ? OFFLINE_CURATED_TOKENS
       : getTestnetUniswapPairs(network);
   dispatch({
     payload: pairs,
@@ -140,13 +146,16 @@ export const uniswapUpdateFavorites = (assetAddress, add = true) => (
 };
 
 // -- Reducer --------------------------------------------------------------- //
+/**
+ * The initial state will default to all offline compile-time data.
+ */
 export const INITIAL_UNISWAP_STATE = {
-  allTokens: RAINBOW_TOKEN_LIST,
+  allTokens: OFFLINE_TOKENS,
   favorites: DefaultUniswapFavorites['mainnet'],
   fetchingUniswap: false,
   loadingAllTokens: true,
   loadingUniswap: false,
-  pairs: CURATED_UNISWAP_TOKENS,
+  pairs: OFFLINE_CURATED_TOKENS,
 };
 
 export default (state = INITIAL_UNISWAP_STATE, action) =>
