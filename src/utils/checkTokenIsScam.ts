@@ -1,5 +1,7 @@
 import { toLower } from 'lodash';
 import { OFFLINE_TOKEN_LIST_SAFE } from '@rainbow-me/references';
+import { fromDiskCache } from 'rn-disk-cache';
+import { logger } from '.';
 
 interface TokenMetadata {
   name: string;
@@ -23,6 +25,8 @@ export default async function checkTokenIsScam({
   //   },
   //   60 // one minute
   // );
+  const test = await fromDiskCache('test', async () => ({ test: 42 }), 60);
+  logger.log(test);
   const tokenList: any = OFFLINE_TOKEN_LIST_SAFE;
   const nameFound = tokenList[toLower(name)];
   const symbolFound = tokenList[toLower(symbol)];

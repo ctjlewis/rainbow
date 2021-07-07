@@ -29,6 +29,8 @@ if (process.env.CI) {
 module.exports = {
   resolver: {
     blacklistRE,
+    sourceExts: ['js', 'cjs', 'mjs', 'ts', 'jsx', 'tsx'],
+    // extraNodeModules: require('node-libs-react-native'),
   },
   transformer,
 };
