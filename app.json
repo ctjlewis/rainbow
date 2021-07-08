@@ -1,4 +1,11 @@
 {
   "name": "Rainbow",
-  "displayName": "Rainbow"
+  "displayName": "Rainbow",
+  "expo": {
+    "name": "Rainbow",
+    "slug": "rainbow-me",
+    "packagerOpts": {
+      "sourceExts": ["js", "mjs", "cjs"]
+    }
+  }
 }

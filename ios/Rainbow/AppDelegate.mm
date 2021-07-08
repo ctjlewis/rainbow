@@ -20,6 +20,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import <mach/mach.h>
 
+ 
+#import <UMCore/UMModuleRegistry.h>
+#import <UMReactNativeAdapter/UMNativeModulesProxy.h>
+#import <UMReactNativeAdapter/UMModuleRegistryAdapter.h>
 
 
 @interface RainbowSplashScreenManager : NSObject <RCTBridgeModule>
@@ -37,6 +41,12 @@ RCT_EXPORT_METHOD(hideAnimated) {
   [((AppDelegate*) UIApplication.sharedApplication.delegate) hideSplashScreenAnimated];
 }
 
+@end
+
+@interface AppDelegate () <RCTBridgeDelegate>
+ 
+@property (nonatomic, strong) UMModuleRegistryAdapter *moduleRegistryAdapter;
+ 
 @end
 
 @implementation AppDelegate
@@ -71,6 +81,8 @@ RCT_EXPORT_METHOD(hideAnimated) {
 
   [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES];
 
+  self.moduleRegistryAdapter = [[UMModuleRegistryAdapter alloc] initWithModuleRegistryProvider:[[UMModuleRegistryProvider alloc] init]];
+
   // React Native - Defaults
   self.bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:self.bridge
@@ -84,6 +96,8 @@ RCT_EXPORT_METHOD(hideAnimated) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+
+  [super application:application didFinishLaunchingWithOptions:launchOptions];
 
   [[NSNotificationCenter defaultCenter] addObserver:self
   selector:@selector(handleRapInProgress:)
@@ -105,6 +119,13 @@ RCT_EXPORT_METHOD(hideAnimated) {
 
 
   return YES;
+}
+
+- (NSArray<id<RCTBridgeModule>> *)extraModulesForBridge:(RCTBridge *)bridge
+{
+    NSArray<id<RCTBridgeModule>> *extraModules = [_moduleRegistryAdapter extraModulesForBridge:bridge];
+    // If you'd like to export some custom RCTBridgeModules that are not Expo modules, add them here!
+    return extraModules;
 }
 
 - (void)handleRsEscape:(NSNotification *)notification {

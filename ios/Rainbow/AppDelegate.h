@@ -16,7 +16,9 @@
 
 @class RCTBridge;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, RCTBridgeDelegate, UNUserNotificationCenterDelegate, FIRMessagingDelegate>
+#import <UMCore/UMAppDelegateWrapper.h>
+ 
+@interface AppDelegate : UMAppDelegateWrapper <UIApplicationDelegate, RCTBridgeDelegate>
 
 - (void)hideSplashScreenAnimated;
 
