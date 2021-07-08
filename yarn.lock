@@ -2462,16 +2462,18 @@
   resolved "https://registry.yarnpkg.com/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
   integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
 
-"@lavamoat/allow-scripts@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@lavamoat/allow-scripts/-/allow-scripts-1.0.3.tgz#8fa54a3f250977fdc85484d0870ae65c4e50a0c8"
-  integrity sha512-bzRYwOqjx5UU2vQYIV/QZYQGDA1Nm4lXipTUCK4UNBwGSwYlK8A1SUrQdX+Rp0ASbr/mb8IH6rPIjz1LgsDbDA==
+"@lavamoat/allow-scripts@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@lavamoat/allow-scripts/-/allow-scripts-1.0.6.tgz#fbdf7c35a5c2c2cff05ba002b7bc8f3355bda22c"
+  integrity sha512-bBUN2xuQEXWmWTJrfkwaM8Ige7TNfTTRodyW353VYnzX7kW866Tm/Ag0hdbukFvJfNjRHabVmLKxYYL8l/uyZQ==
   dependencies:
+    "@lavamoat/preinstall-always-fail" "^1.0.0"
     "@npmcli/run-script" "^1.8.1"
     "@yarnpkg/lockfile" "^1.1.0"
+    npm-logical-tree "^1.2.1"
+    resolve "^1.20.0"
     semver "^7.3.4"
     yargs "^16.2.0"
-    yarn-logical-tree "^1.0.2"
 
 "@lavamoat/preinstall-always-fail@^1.0.0":
   version "1.0.0"
@@ -12866,7 +12868,7 @@ resolve-url@^0.2.1:
   resolved "https://registry.yarnpkg.com/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
   integrity sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
 
-resolve@1.8.1, resolve@^1.1.6, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.17.0, resolve@^1.18.1, resolve@^1.19.0, resolve@^1.3.2, resolve@^1.8.1, resolve@^2.0.0-next.3:
+resolve@1.8.1, resolve@^1.1.6, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.17.0, resolve@^1.18.1, resolve@^1.19.0, resolve@^1.20.0, resolve@^1.3.2, resolve@^1.8.1, resolve@^2.0.0-next.3:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.8.1.tgz#82f1ec19a423ac1fbd080b0bab06ba36e84a7a26"
   integrity sha512-AicPrAC7Qu1JxPCZ9ZgCZlY35QgFnNqc+0LtbRNxnVw4TXvjQ72wnuL9JQcEBgXkI9JM8MsT9kaQoHcpCRJOYA==
@@ -12968,10 +12970,9 @@ rn-dominant-color@^1.7.0:
   resolved "https://registry.yarnpkg.com/rn-dominant-color/-/rn-dominant-color-1.7.0.tgz#99b86847dec671c3c0cf84f990a6ef8eb95a19d8"
   integrity sha512-HlFVCCy0gleMhxE1o+twOJwg/FxAMw5XBoZbMcifcVLIa9wCCJCiOz70dl7I6m0vvzVdOcE4RoZ+0PTv3IMBTQ==
 
-rn-nodeify@10.2.0:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/rn-nodeify/-/rn-nodeify-10.2.0.tgz#e68843bf280edf878b7615b255fb5e71cde9f8f6"
-  integrity sha512-mPNe2vNR14UTwAbpebI9fXn9HAU37vebyZDCqZOK6G5GBEUiMCANIVa7zgc9aJ1JeziLUGLR9c+H9/BSbVdd4Q==
+rn-nodeify@ctjlewis/rn-nodeify:
+  version "10.3.0"
+  resolved "https://codeload.github.com/ctjlewis/rn-nodeify/tar.gz/89460b6087febcae7ccb6d61cb3f4b2986c1e729"
   dependencies:
     "@yarnpkg/lockfile" "^1.0.0"
     deep-equal "^1.0.0"
@@ -15100,14 +15101,6 @@ yargs@^16.2.0:
     string-width "^4.2.0"
     y18n "^5.0.5"
     yargs-parser "^20.2.2"
-
-yarn-logical-tree@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/yarn-logical-tree/-/yarn-logical-tree-1.0.2.tgz#11130e00333b02174efcfd5599a5e68ca356fa14"
-  integrity sha512-ra0Bl8oB7sN4fkWSSC2+P3luaFiwFFJ/KcCLSjY6HHRvKcBMjOcIIF1z6IHU+plmEYyZOc546cWwi0f0QiOQtw==
-  dependencies:
-    npm-logical-tree "^1.2.1"
-    semver "^5.5.0"
 
 yeast@0.1.2:
   version "0.1.2"

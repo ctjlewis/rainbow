@@ -244,7 +244,7 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.10.4",
     "@babel/runtime": "^7.12.5",
-    "@lavamoat/allow-scripts": "^1.0.3",
+    "@lavamoat/allow-scripts": "^1.0.6",
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.9",
     "@types/react": "^16.9.44",
@@ -282,7 +282,7 @@
     "node-vibrant": "^3.2.1-alpha.1",
     "prettier": "^2.2.1",
     "react-test-renderer": "17.0.1",
-    "rn-nodeify": "10.2.0",
+    "rn-nodeify": "ctjlewis/rn-nodeify",
     "schedule": "0.5.0",
     "typescript": "^3.9.7"
   },
@@ -387,7 +387,8 @@
     "timers": "timers-browserify",
     "tty": "tty-browserify",
     "vm": "vm-browserify",
-    "tls": false
+    "tls": false,
+    "child_process": false
   },
   "browser": {
     "zlib": "browserify-zlib",
@@ -413,7 +414,8 @@
     "timers": "timers-browserify",
     "tty": "tty-browserify",
     "vm": "vm-browserify",
-    "tls": false
+    "tls": false,
+    "child_process": false
   },
   "lavamoat": {
     "allowScripts": {
