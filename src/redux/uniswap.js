@@ -126,24 +126,27 @@ export const uniswapPairsInit = () => (dispatch, getState) => {
 export const uniswapResetState = () => dispatch =>
   dispatch({ type: UNISWAP_CLEAR_STATE });
 
-export const uniswapUpdateFavorites = (assetAddress, add = true) => (
+export const uniswapUpdateFavorites = (
+  assetAddress,
+  add = true
+) => (
   dispatch,
   getState
 ) => {
-  const { favorites } = getState().uniswap;
-  const normalizedFavorites = map(favorites, toLower);
+    const { favorites } = getState().uniswap;
+    const normalizedFavorites = map(favorites, toLower);
 
-  const updatedFavorites = add
-    ? uniq(concat(normalizedFavorites, assetAddress))
-    : isArray(assetAddress)
-    ? without(normalizedFavorites, ...assetAddress)
-    : without(normalizedFavorites, assetAddress);
-  dispatch({
-    payload: updatedFavorites,
-    type: UNISWAP_UPDATE_FAVORITES,
-  });
-  saveUniswapFavorites(updatedFavorites);
-};
+    const updatedFavorites = add
+      ? uniq(concat(normalizedFavorites, assetAddress))
+      : isArray(assetAddress)
+        ? without(normalizedFavorites, ...assetAddress)
+        : without(normalizedFavorites, assetAddress);
+    dispatch({
+      payload: updatedFavorites,
+      type: UNISWAP_UPDATE_FAVORITES,
+    });
+    saveUniswapFavorites(updatedFavorites);
+  };
 
 // -- Reducer --------------------------------------------------------------- //
 /**

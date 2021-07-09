@@ -12153,15 +12153,15 @@ r2@^2.0.1:
     typedarray-to-buffer "^3.1.2"
 
 rainbow-overrides@ctjlewis/rainbow-overrides:
-  version "1.11.0"
-  resolved "https://codeload.github.com/ctjlewis/rainbow-overrides/tar.gz/12946eb1223e9e2c86e2271ca7ebb1c894083941"
+  version "1.12.0"
+  resolved "https://codeload.github.com/ctjlewis/rainbow-overrides/tar.gz/2b2531dba5d489f03b240f2ab2fc82db9fa7c22f"
   dependencies:
     glob "^7.1.7"
     typescript "^4.3.4"
 
 rainbow-token-list@ctjlewis/rainbow-token-list:
-  version "1.42.0"
-  resolved "https://codeload.github.com/ctjlewis/rainbow-token-list/tar.gz/a8115632fdbd61d36ac217cffddcc891b12837f5"
+  version "1.43.0"
+  resolved "https://codeload.github.com/ctjlewis/rainbow-token-list/tar.gz/16923283531be330798e49066c2a9f6b6a3069e0"
   dependencies:
     "@ethersproject/address" "^5.4.0"
     "@types/request" "^2.48.5"
