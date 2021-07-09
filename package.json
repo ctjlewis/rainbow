@@ -104,6 +104,7 @@
     "axios": "^0.21.1",
     "bignumber.js": "^9.0.0",
     "bip39": "^3.0.2",
+    "browserify-process": "~0.11.0",
     "browserify-zlib": "^0.1.4",
     "buffer": "^4.9.1",
     "chroma-js": "^2.1.0",
@@ -146,7 +147,7 @@
     "qrcode": "^1.4.4",
     "qs": "^6.9.4",
     "querystring-es3": "^0.2.1",
-    "rainbow-token-list": "^1.2.2",
+    "rainbow-token-list": "ctjlewis/rainbow-token-list",
     "react": "17.0.1",
     "react-coin-icon": "^0.1.42",
     "react-fast-compare": "^2.0.4",
@@ -179,7 +180,8 @@
     "react-native-keyboard-area": "^1.0.5",
     "react-native-keychain": "6.2.0",
     "react-native-languages": "^3.0.0",
-    "react-native-level-fs": "^3.0.1",
+    "react-native-level-fs": "^3.0.0",
+    "react-native-level-fs-test": "^3.0.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-mail": "^4.1.0",
     "react-native-markdown-display": "^7.0.0-alpha.2",
@@ -376,7 +378,7 @@
     "os": "react-native-os",
     "path": "path-browserify",
     "querystring": "querystring-es3",
-    "fs": "react-native-level-fs",
+    "fs": "react-native-level-fs-test",
     "_stream_transform": "readable-stream/transform",
     "_stream_readable": "readable-stream/readable",
     "_stream_writable": "readable-stream/writable",
@@ -388,7 +390,8 @@
     "tty": "tty-browserify",
     "vm": "vm-browserify",
     "tls": false,
-    "child_process": false
+    "child_process": false,
+    "process": "browserify-process"
   },
   "browser": {
     "zlib": "browserify-zlib",
@@ -403,7 +406,7 @@
     "os": "react-native-os",
     "path": "path-browserify",
     "querystring": "querystring-es3",
-    "fs": "react-native-level-fs",
+    "fs": "react-native-level-fs-test",
     "_stream_transform": "readable-stream/transform",
     "_stream_readable": "readable-stream/readable",
     "_stream_writable": "readable-stream/writable",
@@ -415,7 +418,8 @@
     "tty": "tty-browserify",
     "vm": "vm-browserify",
     "tls": false,
-    "child_process": false
+    "child_process": false,
+    "process": "browserify-process"
   },
   "lavamoat": {
     "allowScripts": {
