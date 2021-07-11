@@ -24,6 +24,7 @@ const CurrencyItemLabel = styled(Text).attrs(({ theme: { colors } }) => ({
 // eslint-disable-next-line react/display-name
 const CurrencyItem = isWalletEthZero => ({ item: address, isSelected }) => {
   const metadata = getCuratedToken(address);
+  // const { value: metadata } = us
 
   return (
     <RowWithMargins
