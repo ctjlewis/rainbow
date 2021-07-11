@@ -35,8 +35,10 @@ export {
   UNISWAP_V2_BASES,
   UNISWAP_V2_ROUTER_ABI,
   UNISWAP_V2_ROUTER_ADDRESS,
-  getSafe,
 } from './uniswap';
+
+export * from './uniswap/lib/ops';
+
 export {
   getWyreErrorOverride,
   wyreSupportedCountries,

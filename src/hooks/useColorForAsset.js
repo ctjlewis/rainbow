@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { lightModeThemeColors } from '../styles/colors';
 import useImageMetadata from './useImageMetadata';
 import {
-  getTokenMetadata,
+  getCuratedToken,
   getUrlForTrustIconFallback,
   isETH,
   pseudoRandomArrayItemFromString,
@@ -14,7 +14,7 @@ export default function useColorForAsset(
   forceLightMode = false
 ) {
   const { address, color } = asset;
-  const token = getTokenMetadata(address);
+  const token = getCuratedToken(address);
   const tokenListColor = token?.color;
 
   const { color: imageColor } = useImageMetadata(

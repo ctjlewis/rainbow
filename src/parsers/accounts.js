@@ -8,7 +8,7 @@ import {
   convertAmountToPercentageDisplay,
   convertRawAmountToBalance,
 } from '@rainbow-me/utilities';
-import { getTokenMetadata, isLowerCaseMatch } from '@rainbow-me/utils';
+import { getCuratedToken, isLowerCaseMatch } from '@rainbow-me/utils';
 
 /**
  * @desc parse account assets
@@ -45,7 +45,7 @@ export const parseAssetSymbol = (metadata, symbol) => {
  * @return {Object}
  */
 export const parseAsset = ({ asset_code: address, ...asset } = {}) => {
-  const metadata = getTokenMetadata(address);
+  const metadata = getCuratedToken(address);
   const name = parseAssetName(metadata, asset.name);
   const symbol = parseAssetSymbol(metadata, asset.symbol);
   const type =

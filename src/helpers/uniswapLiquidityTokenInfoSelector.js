@@ -7,7 +7,7 @@ import {
   handleSignificantDecimalsWithThreshold,
   multiply,
 } from '@rainbow-me/helpers/utilities';
-import { getTokenMetadata } from '@rainbow-me/utils';
+import { getCuratedToken } from '@rainbow-me/utils';
 
 const assetsSelector = state => state.data.assets;
 const nativeCurrencySelector = state => state.settings.nativeCurrency;
@@ -36,7 +36,7 @@ const transformPool = (liquidityPool, nativeCurrency) => {
 
   const formattedTokens = map(tokens, token => ({
     ...token,
-    ...getTokenMetadata(token.address),
+    ...getCuratedToken(token.address),
     value: handleSignificantDecimalsWithThreshold(token.balance, 4),
   }));
 

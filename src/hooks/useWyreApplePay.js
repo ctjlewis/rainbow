@@ -18,7 +18,7 @@ import {
 import useAccountSettings from './useAccountSettings';
 import usePurchaseTransactionStatus from './usePurchaseTransactionStatus';
 import useTimeout from './useTimeout';
-import { getTokenMetadata } from '@rainbow-me/utils';
+import { getCuratedToken } from '@rainbow-me/utils';
 import logger from 'logger';
 
 export default function useWyreApplePay() {
@@ -51,7 +51,7 @@ export default function useWyreApplePay() {
 
   const onPurchase = useCallback(
     async ({ address, value }) => {
-      const metadata = getTokenMetadata(address);
+      const metadata = getCuratedToken(address);
       const currency = metadata?.symbol;
 
       const referenceInfo = {

@@ -16,7 +16,7 @@ import {
   SOCKS_ADDRESS,
 } from '@rainbow-me/references';
 import { greaterThanOrEqualTo, multiply } from '@rainbow-me/utilities';
-import { checkTokenIsScam, getTokenMetadata } from '@rainbow-me/utils';
+import { checkTokenIsScam, getCuratedToken } from '@rainbow-me/utils';
 
 // -- Constants ------------------------------------------------------------- //
 const UNISWAP_LOAD_REQUEST = 'uniswap/UNISWAP_LOAD_REQUEST';
@@ -57,7 +57,7 @@ const parseTokens = async tokens => {
 
   for (const token of tokens) {
     const tokenAddress = toLower(token.id);
-    const metadata = getTokenMetadata(tokenAddress);
+    const metadata = getCuratedToken(tokenAddress);
     if (token.totalLiquidity === '0') return;
 
     // if unverified AND name/symbol match a curated token, skip

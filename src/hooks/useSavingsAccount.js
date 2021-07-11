@@ -22,7 +22,7 @@ import {
 import { multiply } from '@rainbow-me/helpers/utilities';
 import { parseAssetName, parseAssetSymbol } from '@rainbow-me/parsers';
 import { CDAI_CONTRACT, DAI_ADDRESS } from '@rainbow-me/references';
-import { getTokenMetadata } from '@rainbow-me/utils';
+import { getCuratedToken } from '@rainbow-me/utils';
 
 const COMPOUND_QUERY_INTERVAL = 120000; // 120 seconds
 
@@ -47,7 +47,7 @@ const getCTokenData = marketData => {
     name: originalName,
     symbol: originalSymbol,
   } = marketData;
-  const metadata = getTokenMetadata(cTokenAddress);
+  const metadata = getCuratedToken(cTokenAddress);
   const name = parseAssetName(metadata, originalName);
   const symbol = parseAssetSymbol(metadata, originalSymbol);
 
@@ -66,7 +66,7 @@ const getUnderlyingData = marketData => {
     underlyingName,
     underlyingSymbol,
   } = marketData;
-  const metadata = getTokenMetadata(underlyingAddress);
+  const metadata = getCuratedToken(underlyingAddress);
   const name = parseAssetName(metadata, underlyingName);
   const symbol = parseAssetSymbol(metadata, underlyingSymbol);
 

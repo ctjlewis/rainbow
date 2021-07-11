@@ -6,7 +6,7 @@ import { useTheme } from '../../context/ThemeContext';
 import CoinIconFallback from './CoinIconFallback';
 import CoinIconIndicator from './CoinIconIndicator';
 import { useColorForAsset } from '@rainbow-me/hooks';
-import { getTokenMetadata, isETH, magicMemo } from '@rainbow-me/utils';
+import { getCuratedToken, isETH, magicMemo } from '@rainbow-me/utils';
 
 export const CoinIconSize = 40;
 
@@ -23,7 +23,7 @@ const CoinIcon = ({
   symbol = '',
   ...props
 }) => {
-  const tokenMetadata = getTokenMetadata(address);
+  const tokenMetadata = getCuratedToken(address);
   const color = useColorForAsset({ address });
   const { colors, isDarkMode } = useTheme();
 

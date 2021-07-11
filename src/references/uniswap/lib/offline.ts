@@ -8,6 +8,7 @@ import MULTICALL_ABI from '../uniswap-multicall-abi.json';
 import { default as UNISWAP_TESTNET_TOKEN_LIST } from '../uniswap-pairs-testnet.json';
 import { abi as UNISWAP_V2_ROUTER_ABI } from '../uniswap-v2-router.json';
 import UNISWAP_V1_EXCHANGE_ABI from '../v1-exchange-abi';
+
 import { byAddress, getSafe, onlyCurated, tokenListFromData } from './ops';
 
 export { OFFLINE_TOKEN_METADATA };

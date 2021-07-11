@@ -1,7 +1,6 @@
 import { toLower } from 'lodash';
 import { loadTokenList } from 'rainbow-token-list';
 import { fromDiskCache } from 'rn-disk-cache';
-import { logger } from '.';
 import { RainbowToken } from '@rainbow-me/entities';
 import { getSafe } from '@rainbow-me/references';
 // import { OFFLINE_TOKEN_LIST_SAFE } from '@rainbow-me/references';

@@ -6,7 +6,7 @@ import { JellySelector, JellySelectorShadowIndicator } from '../jelly-selector';
 import { RowWithMargins } from '../layout';
 import { Text } from '../text';
 import { ETH_ADDRESS } from '@rainbow-me/references';
-import { getTokenMetadata } from '@rainbow-me/utils';
+import { getCuratedToken } from '@rainbow-me/utils';
 
 const CurrencyItemHeight = 40;
 
@@ -23,7 +23,7 @@ const CurrencyItemLabel = styled(Text).attrs(({ theme: { colors } }) => ({
 
 // eslint-disable-next-line react/display-name
 const CurrencyItem = isWalletEthZero => ({ item: address, isSelected }) => {
-  const metadata = getTokenMetadata(address);
+  const metadata = getCuratedToken(address);
 
   return (
     <RowWithMargins

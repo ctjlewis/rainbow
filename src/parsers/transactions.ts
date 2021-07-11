@@ -39,7 +39,7 @@ import {
   convertRawAmountToBalance,
   convertRawAmountToNativeDisplay,
 } from '@rainbow-me/utilities';
-import { ethereumUtils, getTokenMetadata } from '@rainbow-me/utils';
+import { ethereumUtils, getCuratedToken } from '@rainbow-me/utils';
 
 const LAST_TXN_HASH_BUFFER = 20;
 
@@ -305,7 +305,7 @@ const parseTransaction = (
     txn?.changes,
     (internalTxn, index): RainbowTransaction => {
       const address = toLower(internalTxn?.asset?.asset_code);
-      const metadata = getTokenMetadata(address);
+      const metadata = getCuratedToken(address);
       const updatedAsset = {
         address,
         decimals: internalTxn?.asset?.decimals,
